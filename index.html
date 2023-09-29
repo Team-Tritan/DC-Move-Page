@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Transitional Period | AS393577</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+      body {
+        font-family: "Courier New", monospace;
+        text-align: center;
+        background-color: #000;
+        color: #0f0;
+        margin: 0;
+        padding: 0;
+      }
+
+      .message {
+        margin: 100px auto;
+        padding: 20px;
+        max-width: 600px;
+        background-color: #222;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 255, 0, 0.2);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      h1 {
+        color: #0f0;
+        display: flex;
+        align-items: center;
+        font-size: 24px;
+        margin-bottom: 20px;
+      }
+
+      h1 img {
+        margin-right: 10px;
+        filter: hue-rotate(250deg);
+      }
+
+      a {
+        color: #8451fc;
+        text-decoration: underline;
+      }
+
+      p {
+        color: #0f0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="message">
+      <h1>
+        <img
+          src="https://s3.wasabisys.com/team-tritan/tritan-bot/logo.webp"
+          width="80px"
+          height="80px"
+        />
+        Tritan ISP (AS393577)
+      </h1>
+      <div id="typedParagraph"></div>
+      <p>- Tritan NOC</p>
+    </div>
+
+    <script>
+      $(document).ready(function () {
+        var paragraphToType = [
+          "We are currently transitioning data centers to Digital Reality in SFO. All services will be offline until further notice.",
+          " ",
+          "If you need immediate support, please reach out in our Discord (discord.gg/http).",
+          " ",
+          "Thank you for your patience. We expect to have all services back up by 10/07, everything will be fully backed up prior to the move.",
+        ];
+        var typingSpeed = 50;
+        var currentIndex = 0;
+
+        function typeText(elementId, textArray, speed) {
+          var element = $("#" + elementId);
+
+          function type() {
+            if (currentIndex < textArray.length) {
+              var currentText = textArray[currentIndex];
+              currentIndex++;
+
+              var i = 0;
+              var interval = setInterval(function () {
+                if (i < currentText.length) {
+                  element.append(currentText.charAt(i));
+                  i++;
+                } else {
+                  clearInterval(interval);
+                  element.append("<br>");
+                  type();
+                }
+              }, speed);
+            }
+          }
+
+          type();
+        }
+
+        typeText("typedParagraph", paragraphToType, typingSpeed);
+      });
+    </script>
+  </body>
+</html>
